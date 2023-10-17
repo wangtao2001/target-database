@@ -69,4 +69,6 @@ class PubMed:
             for link in self.links:
                 data.loc[len(data)] = list(self._get_info(link))
                 tq.update(1)
-        data.to_excel(f"data/pubmed-{self.term}-{self.filters if self.filters else ''}.xlsx", index=False)
+        excel_name = f"data/pubmed-{self.term}-{self.filters if self.filters else ''}.xlsx"
+        data.to_excel(excel_name, index=False)
+        return excel_name
